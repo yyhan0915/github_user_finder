@@ -1,2 +1,2 @@
-export * from './Title/Title';
+// export * from './pages/Title/Title';
 export * from './Image/Image';

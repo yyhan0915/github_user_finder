@@ -3,10 +3,7 @@
     "module": "es6",
     "target": "es5",
     "downlevelIteration": true,
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     "jsx": "react",
     "baseUrl": ".",
     "moduleResolution": "node",
@@ -18,10 +15,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    "emitDecoratorMetadata": true
   },
-  "include": [
-    "typings",
-    "src"
-  ]
+  "include": ["src"]
 }
