@@ -1,15 +1,6 @@
-import { AxiosResponse } from 'axios';
 import { createAction } from 'redux-actions';
 import { TakeableChannel } from 'redux-saga';
-import {
-    CallEffect,
-    ForkEffect,
-    PutEffect,
-    call,
-    put,
-    takeEvery,
-    takeLatest,
-} from 'redux-saga/effects';
+import { ForkEffect, call, put, takeLatest } from 'redux-saga/effects';
 
 import * as api from '../lib/api/user';
 
@@ -22,23 +13,22 @@ const GET_USERS_FAILURE = 'userlist/GET_USERS_FAILURE' as const;
 export const getUsers = createAction(GET_USERS, (item: any) => item);
 
 export function* userlistSaga(): Generator<ForkEffect<never>, void> {
-    yield takeEvery(
+    yield takeLatest(
         (GET_USERS as unknown) as TakeableChannel<unknown>,
         getUsersSaga,
     );
 }
 
-function* getUsersSaga(action: { payload?: number }) {
+function* getUsersSaga(action: ReturnType<typeof getUsers>) {
     yield put(startLoading(GET_USERS));
     try {
         const users = yield call(api.getUsers, action.payload);
-
         yield put({ type: GET_USERS_SUCCESS, payload: users.data });
     } catch (error) {
         yield put({
-            type: GET_USERS_FAILURE,
-            payload: error,
             error: true,
+            payload: error,
+            type: GET_USERS_FAILURE,
         });
     }
     yield put(finishLoading(GET_USERS));

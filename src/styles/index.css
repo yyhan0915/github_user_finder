@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, system-ui, 'Ubuntu', 'Oxygen', 'Helvetica Neue',
+    font-family: 'Helvetica Neue', -apple-system, system-ui, 'Ubuntu', 'Oxygen',
         'Segoe UI', BlinkMacSystemFont, Roboto, Arial, sans-serif;
     box-sizing: border-box;
     min-height: 100%;

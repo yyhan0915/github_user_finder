@@ -9,12 +9,12 @@ import Responsive, { ResponsiveProps } from './Responsive';
 const HeaderBlock = styled.div`
     position: fixed;
     width: 100%;
-    background: white;
+    background: #ddd;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
 `;
 
 const Wrapper: StyledComponent<React.FC<ResponsiveProps>, any> = styled(
-    Responsive,
+    Responsive
 )`
     height: 4rem;
     display: flex;
@@ -22,7 +22,7 @@ const Wrapper: StyledComponent<React.FC<ResponsiveProps>, any> = styled(
     justify-content: space-between;
     .logo {
         font-size: 1.125rem;
-        font-weight: 800;
+        font-weight: 1000;
         letter-spacing: 1px;
     }
     .right {

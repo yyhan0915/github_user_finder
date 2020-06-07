@@ -19,24 +19,35 @@ const UserListContainer = () => {
     );
 
     const handleScroll = React.useCallback(() => {
-        console.log('작동시작...감시중');
         const body = document.querySelector('body');
         const checkState = store.getState().userlist.lasItem;
         if (body && body.scrollHeight <= body.scrollTop + body.clientHeight) {
-            dispatch(getUsers(checkState));
+            const fn = async () => {
+                try {
+                    dispatch(getUsers(checkState));
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+            fn();
         }
-        console.log('작동함!!');
-    }, []);
+    }, [getUsers]);
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         const checkState = store.getState().userlist.lasItem;
-        dispatch(getUsers(checkState));
-
+        const fn = async () => {
+            try {
+                dispatch(getUsers(checkState));
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fn();
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [dispatch]);
+    }, [getUsers]);
 
     return <UserList users={users} loadingUsers={loadingUsers} />;
 };

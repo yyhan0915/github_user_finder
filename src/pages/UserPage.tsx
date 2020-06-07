@@ -2,7 +2,7 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
 import { Header } from '../components';
-import UserDetailContainer from '../containers/UserDetail/UserDetailContainer';
+import { UserDetailContainer } from '../containers/UserDetail/UserDetailContainer';
 interface MatchParams {
     username: string;
 }

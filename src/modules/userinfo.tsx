@@ -25,14 +25,14 @@ function* getUserinfoSaga(action: { payload: string }) {
         const userinfo = yield call(api.getUser, action.payload);
         const repos = yield call(api.getRepos, action.payload);
         yield put({
-            type: GET_USERINFO_SUCCESS,
             payload: { userinfo: userinfo.data, repos: repos.data },
+            type: GET_USERINFO_SUCCESS,
         });
     } catch (error) {
         yield put({
-            type: GET_USERINFO_FAILURE,
-            payload: error,
             error: true,
+            payload: error,
+            type: GET_USERINFO_FAILURE,
         });
         yield put(finishLoading(GET_USERINFO));
     }
@@ -59,13 +59,13 @@ const initialState: UserinfoState = {
 
 const userinfo = (
     state = initialState,
-    action: { type: any; payload: any },
+    action: { type: string; payload: any },
 ) => {
     switch (action.type) {
         case GET_USERINFO_SUCCESS:
             return {
                 ...state,
-                repos: [...state.repos, ...action.payload.repos],
+                repos: [...action.payload.repos],
                 userinfo: action.payload.userinfo,
             };
         default:

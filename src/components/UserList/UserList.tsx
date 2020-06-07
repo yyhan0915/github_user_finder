@@ -76,7 +76,6 @@ const override = css`
     margin: 0 auto;
     border-color: ${palette.cyan[3]};
 `;
-
 interface UserListContainerProps {
     users: User[];
     loadingUsers: boolean;
@@ -86,10 +85,13 @@ export const UserList: React.FC<UserListContainerProps> = ({
     loadingUsers,
     users,
 }) => {
+    const loadingSentence = 'Loading...';
+
     return (
         <UsersListBlock>
             <h2>LIST OF USERS</h2>
-            {!loadingUsers && users && (
+            {!users && <div>Ooops!! someting is wrong...</div>}
+            {users && (
                 <ul>
                     {users.map(user => (
                         <UserItem user={user} key={user.login} />
@@ -97,7 +99,19 @@ export const UserList: React.FC<UserListContainerProps> = ({
                 </ul>
             )}
             {loadingUsers && (
-                <BarLoader css={override} size={50} color={'#123abc'} />
+                <div
+                    style={{
+                        display: 'block',
+                        margin: '15px auto',
+                        padding: '10px',
+                        fontSize: '1.5rem',
+                        color: `${palette.cyan[5]}`,
+                        textAlign: 'center',
+                    }}
+                >
+                    <BarLoader css={override} size={90} color={'#123abc'} />
+                    {loadingSentence}
+                </div>
             )}
         </UsersListBlock>
     );

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { all } from 'redux-saga/effects';
+import { AllEffect, ForkEffect, all } from 'redux-saga/effects';
 
 import loading from '../modules/loading';
 import userinfo, { userinfoSaga } from '../modules/userinfo';
@@ -11,7 +11,10 @@ const rootReducer = combineReducers({
     userlist,
 });
 
-export function* rootSaga() {
+export function* rootSaga(): Generator<
+    AllEffect<Generator<ForkEffect<never>, void>>,
+    void
+> {
     yield all([userlistSaga(), userinfoSaga()]);
 }
 
