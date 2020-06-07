@@ -54,6 +54,7 @@ export const UserDetail = ({
                     width="200px"
                     height="200px"
                     alt="profile_picture"
+                    style={{ boxShadow: '0px 0px 20px #555' }}
                 />
             </UserDetailHead>
             <UserDetailContent>

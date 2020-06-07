@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`has a valid snapshot 1`] = `
+Array [
+  <div
+    className="sc-AxmLO kyACbO"
+  >
+    <div
+      className="sc-AxiKw kAmtBG sc-fzozJi dhrCMu"
+    >
+      <a
+        className="logo"
+        href="/"
+        onClick={[Function]}
+      >
+        <h2>
+          GITHUB USER FINDER
+        </h2>
+      </a>
+      <div
+        className="right"
+      >
+        <button
+          className="sc-AxjAm UyhcK"
+        >
+          <a
+            href="http://github.com"
+          >
+            Go to GITHUB
+          </a>
+        </button>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="sc-fzoLsD btLzaa"
+  />,
+]
+`;
