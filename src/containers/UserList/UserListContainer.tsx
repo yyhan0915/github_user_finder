@@ -4,7 +4,7 @@ import { RootState } from 'src/reducers/root';
 
 import { UserList } from '../../components/UserList/UserList';
 import { getUsers } from '../../modules/userlist';
-import { store } from '../../store/store';
+import store from '../../store/store';
 
 const { useEffect } = React;
 

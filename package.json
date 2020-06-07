@@ -1,5 +1,5 @@
 {
-  "name": "github_user_finder",
+  "name": "centra-recruitment-task",
   "version": "0.2.0",
   "license": "MIT",
   "scripts": {
@@ -18,11 +18,14 @@
   },
   "dependencies": {
     "axios": "0.19.2",
+    "bootstrap": "4.5.0",
     "react": "16.13.1",
+    "react-bootstrap": "1.0.1",
     "react-dom": "16.13.1",
     "react-helmet-async": "1.0.6",
     "react-redux": "7.2.0",
     "react-router-dom": "5.2.0",
+    "react-spinners": "0.8.3",
     "redux": "4.0.5",
     "redux-actions": "2.6.5",
     "redux-devtools-extension": "2.13.8",
@@ -70,8 +73,5 @@
     "tslint-react": "3.6.0",
     "tslint-sonarts": "1.8.0",
     "vrsource-tslint-rules": "5.8.2"
-  },
-  "repository": {
-    "private": true
   }
 }

@@ -4,38 +4,36 @@ import { RouteComponentProps } from 'react-router-dom';
 import { RootState } from 'src/reducers/root';
 
 import { UserDetail } from '../../components/';
-import { UserList } from '../../components/UserList/UserList';
 import { getUserInfo } from '../../modules/userinfo';
 
 const UserDetailContainer = ({ username }: { username: string }) => {
-  const dispatch = useDispatch();
-  const { userinfo, loadingUserinfo } = useSelector(
-    ({ userinfo, loading }: RootState) => ({
-      userinfo: userinfo.userinfo,
-      loadingUserinfo: loading['userinfo/GET_USERINFO'],
-    }),
-  );
+    const dispatch = useDispatch();
+    const { userinfo, loadingUserinfo, repos } = useSelector(
+        ({ userinfo, loading }: RootState) => ({
+            loadingUserinfo: loading['userinfo/GET_USERINFO'],
+            repos: userinfo.repos,
+            userinfo: userinfo.userinfo,
+        }),
+    );
 
-  React.useEffect(() => {
-    const fn = async () => {
-      const response = await dispatch(getUserInfo(username));
-      console.log(response);
-    };
-    fn();
-    // dispatch(getUserInfo(username));
-    // console.log('success');
-    // const fn = async () => {
-    //   try {
-    //     await dispatch(getUserInfo('mojombo'));
-    //     console.log('succeed to use fn fnc');
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-    // fn();
-  }, []);
+    React.useEffect(() => {
+        const fn = async () => {
+            try {
+                await dispatch(getUserInfo(username));
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fn();
+    }, []);
 
-  return <UserDetail />;
+    return (
+        <UserDetail
+            userinfo={userinfo}
+            loadingUserinfo={loadingUserinfo}
+            repos={repos}
+        />
+    );
 };
 
 export default UserDetailContainer;

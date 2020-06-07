@@ -4,12 +4,12 @@ import { Header } from '../components';
 import UserListContainer from '../containers/UserList/UserListContainer';
 
 const HomePage = () => {
-  return (
-    <>
-      <Header />
-      <UserListContainer />
-    </>
-  );
+    return (
+        <>
+            <Header back={0} />
+            <UserListContainer />
+        </>
+    );
 };
 
 export default HomePage;

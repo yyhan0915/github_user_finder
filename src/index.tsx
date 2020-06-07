@@ -1,12 +1,25 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { HelmetProvider } from 'react-helmet-async';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import App from './App';
-import './index.module.css';
-import { store } from './store/store';
+import HomePage from './pages/HomePage';
+import UserPage from './pages/UserPage';
+import store from './store/store';
+import './styles';
+
+const App: React.FC = () => {
+  return (
+    <>
+      <Helmet>
+        <title>GITHUB USER FINDER</title>
+      </Helmet>
+      <Route component={HomePage} path="/" exact />
+      <Route component={UserPage} path="/:username/" />
+    </>
+  );
+};
 
 ReactDOM.render(
   <Provider store={store}>
@@ -19,6 +32,6 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-if (module.hot) {
+if (module.hot !== undefined) {
   module.hot.accept();
 }
