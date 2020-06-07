@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { RootState } from 'src/reducers';
 import styled from 'styled-components';
 
 import palette from '../../lib/styles/palette';
+import { Repo, UserInfo } from '../../modules/userinfo';
 import Responsive from '../common/Responsive';
 
 const UserDetailBlock = styled(Responsive)`
@@ -15,9 +15,9 @@ const UserDetailHead = styled.div`
     padding-bottom: 3rem;
     margin-bottom: 3rem;
     h1 {
-        font-size: 3rem;
+        font-size: 2.4rem;
         line-height: 1.5;
-        margin: 0;
+        margin-bottom: 2rem;
     }
 `;
 
@@ -26,8 +26,16 @@ const UserDetailContent = styled.div`
     color: ${palette.gray[8]};
 `;
 
-export const UserDetail = ({ loadingUserinfo, userinfo, repos }) => {
-    const { name, avatar_url, login, html_url } = userinfo;
+export const UserDetail = ({
+    loadingUserinfo,
+    userinfo,
+    repos,
+}: {
+    loadingUserinfo: boolean;
+    userinfo: UserInfo;
+    repos: Repo[];
+}) => {
+    const { name, avatar_url } = userinfo;
 
     // error handler
     if (!loadingUserinfo || !userinfo) {
@@ -40,11 +48,16 @@ export const UserDetail = ({ loadingUserinfo, userinfo, repos }) => {
                 <title>{name} - GITHUB FINDER</title>
             </Helmet>
             <UserDetailHead>
-                <h1>{name}</h1>
-                <img src={avatar_url} with="200px" height="200px" />
+                <h1>{name} </h1>
+                <img
+                    src={avatar_url}
+                    width="200px"
+                    height="200px"
+                    alt="profile_picture"
+                />
             </UserDetailHead>
             <UserDetailContent>
-                <h2>Number of Repository : {repos.length}</h2>
+                <h3>Number of Repository : {repos.length}</h3>
                 <h3>List of Repository</h3>
                 <ul>
                     {repos.map(item => (

@@ -1,5 +1,15 @@
+import { AxiosResponse } from 'axios';
 import { createAction } from 'redux-actions';
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { TakeableChannel } from 'redux-saga';
+import {
+    CallEffect,
+    ForkEffect,
+    PutEffect,
+    call,
+    put,
+    takeEvery,
+    takeLatest,
+} from 'redux-saga/effects';
 
 import * as api from '../lib/api/user';
 
@@ -11,11 +21,14 @@ const GET_USERS_FAILURE = 'userlist/GET_USERS_FAILURE' as const;
 
 export const getUsers = createAction(GET_USERS, (item: any) => item);
 
-export function* userlistSaga() {
-    yield takeLatest(GET_USERS, getUsersSaga);
+export function* userlistSaga(): Generator<ForkEffect<never>, void> {
+    yield takeEvery(
+        (GET_USERS as unknown) as TakeableChannel<unknown>,
+        getUsersSaga,
+    );
 }
 
-function* getUsersSaga(action: { payload: number | undefined }) {
+function* getUsersSaga(action: { payload?: number }) {
     yield put(startLoading(GET_USERS));
     try {
         const users = yield call(api.getUsers, action.payload);
@@ -37,7 +50,7 @@ export interface User {
     avatar_url: string;
     html_url: string;
     id: number;
-} // 타입이 완벽하지 않음. 리포지토리 숫자는 어디서 구할 수 있을까? https://api.github.com/users/yyhan0915/repos
+}
 
 // userlist state type
 interface UsersState {
@@ -47,8 +60,8 @@ interface UsersState {
 
 // initial State of userlist
 const initialState: UsersState = {
-    users: [],
     lasItem: 0,
+    users: [],
 };
 
 // reducer function
@@ -58,11 +71,10 @@ function userlist(
 ): UsersState {
     switch (action.type) {
         case GET_USERS_SUCCESS: {
-            const newUsers: User[] = [...state.users];
             return {
                 ...state,
-                users: [...state.users, ...action.payload],
                 lasItem: action.payload[action.payload.length - 1].id,
+                users: [...state.users, ...action.payload],
             };
         }
         default:

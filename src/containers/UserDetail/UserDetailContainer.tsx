@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RouteComponentProps } from 'react-router-dom';
 import { RootState } from 'src/reducers/root';
 
 import { UserDetail } from '../../components/';
@@ -17,15 +16,23 @@ const UserDetailContainer = ({ username }: { username: string }) => {
     );
 
     React.useEffect(() => {
-        const fn = async () => {
+        const fn = React.useCallback(async () => {
             try {
                 await dispatch(getUserInfo(username));
             } catch (error) {
                 console.log(error);
             }
-        };
+        }, []);
         fn();
-    }, []);
+        // async () => {
+        //     try {
+        //         await dispatch(getUserInfo(username));
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // };
+        // fn();
+    }, [dispatch]);
 
     return (
         <UserDetail

@@ -5,14 +5,14 @@ import loading from '../modules/loading';
 import userinfo, { userinfoSaga } from '../modules/userinfo';
 import userlist, { userlistSaga } from '../modules/userlist';
 
-const rootReducer = combineReducers<Store>({
-  loading,
-  userinfo,
-  userlist,
+const rootReducer = combineReducers({
+    loading,
+    userinfo,
+    userlist,
 });
 
 export function* rootSaga() {
-  yield all([userlistSaga(), userinfoSaga()]);
+    yield all([userlistSaga(), userinfoSaga()]);
 }
 
 export default rootReducer;

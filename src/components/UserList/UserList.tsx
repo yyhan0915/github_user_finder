@@ -86,12 +86,9 @@ export const UserList: React.FC<UserListContainerProps> = ({
     loadingUsers,
     users,
 }) => {
-    const [reach, setReach] = React.useState(0);
-
     return (
         <UsersListBlock>
             <h2>LIST OF USERS</h2>
-
             {!loadingUsers && users && (
                 <ul>
                     {users.map(user => (
