@@ -1,5 +1,5 @@
 {
-    "name": "centra-recruitment-task",
+    "name": "github_user_finder",
     "version": "0.2.0",
     "license": "MIT",
     "scripts": {
@@ -12,24 +12,6 @@
         "dependencies:update": "npx npm-check --update --save-exact",
         "tsc": "tsc",
         "test": "jest"
-    },
-    "jest": {
-        "moduleFileExtensions": [
-            "ts",
-            "tsx",
-            "js"
-        ],
-        "transform": {
-            "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-        },
-        "setupFiles": [
-            "raf/polyfill"
-        ],
-        "testRegex": "/__tests__/.*\\.(ts|tsx|js)$",
-        "setupTestFrameworkScriptFile": "<rootDir>src/setupTests.ts",
-        "snapshotSerializers": [
-            "enzyme-to-json"
-        ]
     },
     "engines": {
         "node": ">=10",
@@ -53,7 +35,8 @@
         "redux-saga": "1.1.3",
         "redux-thunk": "2.3.0",
         "src": "1.1.2",
-        "styled-components": "5.1.1"
+        "styled-components": "5.1.1",
+        "typescript": "3.8.3"
     },
     "postcss": {
         "modules": true,
@@ -70,7 +53,6 @@
         "@types/enzyme": "3.10.5",
         "@types/enzyme-adapter-react-16": "1.0.6",
         "@types/jest": "25.2.3",
-        "@types/node": "14.0.11",
         "@types/react": "16.9.34",
         "@types/react-dom": "16.9.6",
         "@types/react-redux": "7.1.7",
@@ -101,7 +83,6 @@
         "tslint-misc-rules": "3.5.1",
         "tslint-react": "3.6.0",
         "tslint-sonarts": "1.8.0",
-        "typescript": "3.8.3",
         "vrsource-tslint-rules": "5.8.2"
     }
 }
