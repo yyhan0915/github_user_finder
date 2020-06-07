@@ -1,10 +1,12 @@
 import client from './client';
 
-export const retrievingUsers = () => {
-  client.get('http://api.github.com/users');
+export const getUsers = async (id?: number) => {
+  const response = await client.get(`http://api.github.com/users?since=${id}`);
+  return response;
 };
 
-export const retrievingUser = ({ username }: any) => {
+export const getUser = async (username: string) => {
   // 추후 타입 수정
-  client.get(`http://api.github.com/users/${username}`);
+  const response = await client.get(`http://api.github.com/users/${username}`);
+  return response;
 };

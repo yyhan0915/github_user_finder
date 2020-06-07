@@ -47,7 +47,7 @@ export const Header: React.FC<HeaderProps> = () => {
             GITHUB USER FINDER
           </Link>
           <div className="right">
-            <Button cyan={1}>UserSample</Button>
+            <Button cyan={1}>Go to home</Button>
           </div>
         </Wrapper>
       </HeaderBlock>

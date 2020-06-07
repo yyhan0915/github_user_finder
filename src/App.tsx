@@ -12,7 +12,7 @@ const App: React.FC = () => {
         <title>GITHUB USER FINDER</title>
       </Helmet>
       <Route component={HomePage} path="/" exact />
-      <Route component={UserPage} path="/@:username/" />
+      <Route component={UserPage} path="/:username/" />
     </>
   );
 };

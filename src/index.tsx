@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 import './index.module.css';
-import store from './modules/store/store';
+import { store } from './store/store';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -19,6 +19,6 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
-if (module.hot !== undefined) {
+if (module.hot) {
   module.hot.accept();
 }

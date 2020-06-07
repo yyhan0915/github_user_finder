@@ -1,10 +1,10 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { StyledComponent } from 'styled-components';
 
 export interface ResponsiveProps {
-  children: React.ReactElement[] | Element | string;
+  children: any;
 }
-const ResponsiveBlock = styled.div`
+const ResponsiveBlock: StyledComponent<'div', any> = styled.div`
   padding-left: 1rem;
   padding-right: 1rem;
   width: 1024px;
